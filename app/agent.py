@@ -10,7 +10,7 @@
 モデルは tools.py の関数を「ツール」として呼び出し、その結果を見て回答を作る。
 第5回では、同じツールを MCP サーバー（app/mcp_server.py）経由で受け取る。
 """
-
+from app.tools import make_quiz
 import argparse
 import inspect
 import json
@@ -43,7 +43,7 @@ agent.tool_plain(tools.search_glossary)
 agent.tool_plain(tools.get_lecture_summary)
 
 # TODO(第3回 演習): tools.py に make_quiz を作り、ここで登録しよう
-
+agent.tool_plain(make_quiz)
 # 第5回: 使う MCP サーバーの設定ファイル。Claude Desktop や Cursor と同じ "mcpServers" 形式
 MCP_CONFIG = Path(__file__).resolve().parent / "mcp_servers.json"
 
